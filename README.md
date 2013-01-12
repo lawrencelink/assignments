@@ -1,4 +1,3 @@
-assignments
-===========
-
-assignments 1102
+* name: Lawrence Bellini
+* class: DIG1102
+* term: Spring 2013
