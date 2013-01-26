@@ -1,15 +1,17 @@
-```javascript
 * variables have descriptive names
 * variables do not use proper camel case convention
 
+```javascript
 var IEEE_754_BINARY_64_PRECISION = Math.pow(2, 53);
 var MAX_PACKET_LENGTH            = Math.pow(2, 24) - 1;
 var PacketHeader                 = require('./PacketHeader');
+```
 
 * whitespace makes it easy to read
 * this file does not have any comments
 * every statement ends with a semicolon;
 
+```javascript
 module.exports = Parser;
 function Parser(options) {
   options = options || {};
