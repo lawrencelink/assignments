@@ -1,8 +1,10 @@
 module.exports = function(grunt)
 {
-    grunt.initConfig({
+    grunt.initConfig(
+        {
 		pkg: '<json:package.json>',
-		meta: {
+		meta: 
+        {
 			banner: '/*!=========================================================\n' +
 				'* <%= pkg.name %> v<%= pkg.version %> - <%= grunt.template.today("m/d/yyyy") %>\n' +
                 '* <%= pkg.homepage %>\n' +
@@ -23,11 +25,16 @@ module.exports = function(grunt)
 				'* limitations under the License.\n' +
 				'* ========================================================= */\n'
 		},
-		lint: {
-			all: ['js/*.js']
+        
+		lint: 
+        { 
+			all: ['js/*.js']    
 		},
-		jshint: {
-			options: {
+        
+		jshint: 
+        { 
+			options: 
+            {
 				"validthis": true,
 				"laxbreak" : true,
 				"browser"  : true,
@@ -36,29 +43,41 @@ module.exports = function(grunt)
 				"expr"     : true,
 				"asi"      : true
 			},
-			globals: {
+			globals: 
+            {
 				"jQuery"   : true
-			}
+			}  
 		},
-		concat: {
-			js: {
+        
+		concat: 
+        {
+            js: 
+            {
 				src: ['<banner>', '<file_strip_banner:js/bootstrap-lightbox.js>'],
 				dest: 'build/bootstrap-lightbox.js'
 			},
-			less: {
+			less: 
+            {
 				src: ['<banner>', '<file_strip_banner:less/bootstrap-lightbox.less>'],
 				dest: 'build/bootstrap-lightbox.less'
 			}
 		},
-		min: {
-			dist: {
+        
+		min: 
+        {
+			dist: 
+            {
 				src: ['<banner>', '<file_strip_banner:js/bootstrap-lightbox.js>'],
 				dest: 'build/bootstrap-lightbox.min.js'
 			}
 		},
-		less: {
-			"dist": {
-				options: {
+        
+		less: 
+        {
+			"dist": 
+            {
+				options: 
+                {
 					paths: [
 						"build",
 						"less"
@@ -68,41 +87,56 @@ module.exports = function(grunt)
 					"build/bootstrap-lightbox.css" : "build/bootstrap-lightbox.less"
 				}
 			},
-			"distmin": {
-				options: {
+			"distmin": 
+            {
+				options: 
+                {
 					paths: [
 						"build",
 						"less"
 					],
 					yuicompress: true
 				},
-				files: {
+				files: 
+                {
 					"build/bootstrap-lightbox.min.css" : "build/bootstrap-lightbox.less"
 				}
 			}
 		},
-		clean: {
+        
+		clean: 
+        {
 			dist: [
 				"build/bootstrap-lightbox.less"
 			]
 		},
-		copy: {
-			dist: {
-				files: {
+        
+		copy: 
+        {
+			dist: 
+            {
+				files: 
+                {
 					"docs/assets/js/": "build/bootstrap-lightbox.min.js",
 					"docs/assets/css/": "build/bootstrap-lightbox.min.css",
 				}
 			}
 		},
-		exec: {
-			docs_dep: {
+        
+		exec: 
+        {
+			docs_dep: 
+            {
 				command: 'cd docs/build;npm install'
 			},
-			build_docs: {
+			build_docs: 
+            {
 				command: 'node docs/build'
 			}
 		},
-		qunit: {
+        
+		qunit: 
+        {
 			all: [
 				'test/**.html'
 			]
@@ -123,3 +157,28 @@ module.exports = function(grunt)
 	grunt.registerTask('test', 'qunit lint');
 
 };
+
+'Adding another file to clean up'
+var net = require('net')
+var express = require('express')
+var app = express()
+var server = require('http').createServer(app)
+var io = require('socket.io').listen(server)
+
+app.use(express.static(__dirname))
+
+io.sockets.on('connection', function (client) {
+    var chat = net.connect(1234)
+    chat.on('data', function(data) {
+            client.send(data)
+    })
+
+    client.on('message', function (msg) {
+        chat.write(msg)
+    }).on('disconnect', function() {
+        chat.end()
+    })
+})
+
+server.listen(8088)
+console.log('server running on http://localhost:8088')
