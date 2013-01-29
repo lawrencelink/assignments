@@ -159,23 +159,26 @@ module.exports = function(grunt)
 };
 
 'Adding another file to clean up'
-var net = require('net')
-var express = require('express')
-var app = express()
-var server = require('http').createServer(app)
-var io = require('socket.io').listen(server)
+var net = require('net'),
+    express = require('express'),
+    app = express()
+    server = require('http').createServer(app),
+    io = require('socket.io').listen(server)
 
 app.use(express.static(__dirname))
 
-io.sockets.on('connection', function (client) {
+io.sockets.on('connection', function (client) 
+    {
     var chat = net.connect(1234)
     chat.on('data', function(data) {
             client.send(data)
     })
 
-    client.on('message', function (msg) {
+    client.on('message', function (msg) 
+    {
         chat.write(msg)
-    }).on('disconnect', function() {
+    }).on('disconnect', function() 
+    {
         chat.end()
     })
 })
