@@ -172,7 +172,8 @@ io.sockets.on('connection', function (client)
     var chat = net.connect(1234)
     chat.on('data', function(data) {
             client.send(data)
-    })
+    }
+    )
 
     client.on('message', function (msg) 
     {
@@ -180,8 +181,10 @@ io.sockets.on('connection', function (client)
     }).on('disconnect', function() 
     {
         chat.end()
-    })
-})
+    }
+    )
+}
+)
 
 server.listen(8088)
 console.log('server running on http://localhost:8088')
