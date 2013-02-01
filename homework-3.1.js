@@ -195,169 +195,184 @@ console.log('server running on http://localhost:8088')
 'Adding yet another file to clean up!!'
 <script>
 if (typeof console == "undefined") console = {log:function(){}};
-var application = {
-itemList:null,
-reportInfo:[],
-reportPages:[],
-searchForm:null,
-init:function(){
-    
-    PackageLoader.setContentDestination(document.getElementById("prototypeNodes"));
-    //expander
-    var expander = document.getElementById("leftcolumn_expander");
-    expander.onclick = function(){
-    var container = document.getElementById("container");
-    container.className = (container.className == "leftcolumncollapse")? "" : "leftcolumncollapse";
-    
-}
-//load reportInfo
-var xm = new SPXMLManager();
-xm.add("reports", "/sites/inventory/dataanalytics/", "44998D87-4B06-4278-93FA-37ED51A86A6E", {View:"AFFF95F9-773E-4605-9989-AAF62AFE19D2"});
-xm.request({names:null, oncomplete:this.reportInfoLoaded, oncompleteScope:this});
-},
 
-setReport:function(reportID){
-    var reportInfo = this.reportInfo[reportID];
-    if (!reportInfo) return;
-    var maincolumn = document.getElementById("maincolumn");
-    for (var r in this.reportPages) this.reportPages[r].element.style.display = "none";
-    var reportPage = this.reportPages[reportInfo.ID];
+var application = {
     
-    if (!reportPage){
+    itemList:null,
+    reportInfo:[],
+    reportPages:[],
+    searchForm:null,
     
-        reportPage = new ReportPage(reportInfo);
-        this.reportPages[reportInfo.ID] = reportPage;
-        maincolumn.appendChild(reportPage.element);
-    }
+    init:function(){
     
-    reportPage.element.style.display = "";
-    window.location.hash = reportInfo.ID;
+        PackageLoader.setContentDestination(document.getElementById("prototypeNodes"));
+        //expander
+        var expander = document.getElementById("leftcolumn_expander");
+        expander.onclick = function(){
+            
+            var container = document.getElementById("container");
+            container.className = (container.className == "leftcolumncollapse")? "" : "leftcolumncollapse";
+    
+        }
+        
+        //load reportInfo
+        var xm = new SPXMLManager();
+        xm.add("reports", "/sites/inventory/dataanalytics/", "44998D87-4B06-4278-93FA-37ED51A86A6E", {View:"AFFF95F9-773E-4605-9989-AAF62AFE19D2"});
+        xm.request({names:null, oncomplete:this.reportInfoLoaded, oncompleteScope:this});
+        
+    },
+
+    setReport:function(reportID){
+        var reportInfo = this.reportInfo[reportID];
+        if (!reportInfo) return;
+        var maincolumn = document.getElementById("maincolumn");
+        for (var r in this.reportPages) this.reportPages[r].element.style.display = "none";
+        var reportPage = this.reportPages[reportInfo.ID];
+        
+        if (!reportPage){
+        
+            reportPage = new ReportPage(reportInfo);
+            this.reportPages[reportInfo.ID] = reportPage;
+            maincolumn.appendChild(reportPage.element);
+        }
+        
+        reportPage.element.style.display = "";
+        window.location.hash = reportInfo.ID;
     },
     restoreFromHash:function(){
-    var hash = window.location.hash.substr(1);
-    if (!Number(hash)) return;
-    this.setReport(hash);
-    this.itemList.setCurrentItem(hash);
+        var hash = window.location.hash.substr(1);
+        if (!Number(hash)) return;
+        this.setReport(hash);
+        this.itemList.setCurrentItem(hash);
     },
     //handlers
     reportInfoLoaded:function(e){
-    //reportInfo
-    var isDev = Boolean(String(window.location).match(/\/dev\//));
-    var reports = e.data.reports.array;
-    for (var r in reports) if (reports[r].Active || isDev) this.reportInfo[reports[r].ID] = reports[r];
-    //itemList
-    this.itemList = new ItemList(this);
-    this.itemList.setOptions({idField:"ID", groupField:"Group", sortField:"Title"});
-    this.itemList.setData(this.reportInfo);
-    this.itemList.addEventListener("change", this.itemListChanged);
-    document.getElementById("leftcolumn_list").appendChild(this.itemList.element);
-    //searchForm
-    this.searchForm = new FormController(document.getElementById("leftcolumn_controls"), this);
-    this.searchForm.addEventListener("change", this.searchFormChanged);
-    //
-    window.onhashchange = function(){ application.restoreFromHash(); };
-    this.restoreFromHash();
+        //reportInfo
+        var isDev = Boolean(String(window.location).match(/\/dev\//));
+        var reports = e.data.reports.array;
+        for (var r in reports) if (reports[r].Active || isDev) this.reportInfo[reports[r].ID] = reports[r];
+        //itemList
+        this.itemList = new ItemList(this);
+        this.itemList.setOptions({idField:"ID", groupField:"Group", sortField:"Title"});
+        this.itemList.setData(this.reportInfo);
+        this.itemList.addEventListener("change", this.itemListChanged);
+        document.getElementById("leftcolumn_list").appendChild(this.itemList.element);
+        //searchForm
+        this.searchForm = new FormController(document.getElementById("leftcolumn_controls"), this);
+        this.searchForm.addEventListener("change", this.searchFormChanged);
+        //
+        window.onhashchange = function(){ application.restoreFromHash(); };
+        this.restoreFromHash();
     },
     itemListChanged:function(e){
-    this.controller.setReport(e.data.ID);
+        this.controller.setReport(e.data.ID);
     },
     searchFormChanged:function(e){
-    this.controller.itemList.setOptions({searchString:this.getData().searchString});
+        this.controller.itemList.setOptions({searchString:this.getData().searchString});
     }
-    };
+};
 
 function ReportPage(reportInfo){
     this.init(reportInfo);
 }
 
 ReportPage.prototype = {
+    
     reportInfo:null,
     element:null,
     childElements:null,
     init:function(reportInfo){
-    this.reportInfo = reportInfo;
-    this.element = document.getElementById("reportPageNode").cloneNode(true);
-    this.element.id = "";
-    this.childElements = getNamedElements(this.element);
-    this.childElements.groupName.innerHTML = reportInfo.Group;
-    this.childElements.reportTitle.innerHTML = reportInfo.Title;
-    
-    if (reportInfo.Description){
-        this.childElements.descriptionText.innerHTML = reportInfo.Description;
-        this.childElements.descriptionButton.onclick = this.descriptionButtonClicked;
-        this.childElements.descriptionButton.controller = this;
-    }
-    else this.childElements.description.style.display = "none";
-        PackageLoader.load({url:reportInfo.ReportPackage+".html", oncomplete:this.packageLoaded, oncompleteScope:this});
+        
+        this.reportInfo = reportInfo;
+        this.element = document.getElementById("reportPageNode").cloneNode(true);
+        this.element.id = "";
+        this.childElements = getNamedElements(this.element);
+        this.childElements.groupName.innerHTML = reportInfo.Group;
+        this.childElements.reportTitle.innerHTML = reportInfo.Title;
+        
+        if (reportInfo.Description){
+            
+            this.childElements.descriptionText.innerHTML = reportInfo.Description;
+            this.childElements.descriptionButton.onclick = this.descriptionButtonClicked;
+            this.childElements.descriptionButton.controller = this;
+            
+        }
+        else this.childElements.description.style.display = "none";
+            PackageLoader.load({url:reportInfo.ReportPackage+".html", oncomplete:this.packageLoaded, oncompleteScope:this});
+            
     },
     packageLoaded:function(e){
+        
         var reportObject = window[this.reportInfo.ReportObject];
         if (!reportObject){
             this.childElements.content.innerHTML = "<div class='report'>Oops! Part of the page seems to be missing. (" + this.reportInfo.ReportObject + ")</div>";
             return;
-    }
+        }
     
-    reportObject.init();
-    this.childElements.content.appendChild(reportObject.element);
+        reportObject.init();
+        this.childElements.content.appendChild(reportObject.element);
+        
     },
     descriptionButtonClicked:function(e){
+        
         var d = this.controller.childElements.description;
         d.className = (d.className.match("collapsed"))? d.className.replace(/\s?collapsed/, "") : d.className += " collapsed";
         //
         this.controller.childElements.descriptionTextContainer.style.height = (d.className.match("collapsed"))? "0px" : this.controller.childElements.descriptionText.clientHeight + "px";
+        
     }
 }
 
 var PackageLoader = {
-packages:[], //{url, iframe, requests, loaded}
-contentDestination:document.body,
-//public
-load:function(request){ //{url, oncomplete, oncompleteScope}
-var pkg = this.packages[arrayIndexOf(this.packages, request.url, "url")];
-if (!pkg){
-pkg = {url:request.url, requests:[request], loaded:false};
-this.packages.push(pkg);
-pkg.iframe = document.createElement("iframe");
-pkg.iframe.controller = this;
-pkg.iframe.style.display = "none";
-pkg.iframe.src = pkg.url;
-document.body.appendChild(pkg.iframe);
-if (pkg.iframe.readyState) pkg.iframe.onreadystatechange = function(){ if (this.readyState == "complete") this.controller.unloadPackage(this); }
-else pkg.iframe.contentWindow.onload = function(){ this.frameElement.controller.unloadPackage(this.frameElement); }
-}
-else{
-if (!pkg.loaded) pkg.requests.push(request);
-else this.completeRequest(request);
-}
-},
-setContentDestination:function(element){
-this.contentDestination = element;
-},
-//private
-unloadPackage:function(iframe){
-//move styles, scripts, and content from loaded iframe to document
-var styles = iframe.contentWindow.document.getElementsByTagName("style");
-for (var s = 0; s < styles.length; s++) document.getElementsByTagName("head")[0].appendChild(styles[s]);
-var scripts = iframe.contentWindow.document.getElementsByTagName("script");
-for (var s = 0; s < scripts.length; s++){
-var script = document.createElement("script");
-script.text = scripts[s].text;
-document.body.appendChild(script);
-}
-for (var c = 0; c < iframe.contentWindow.document.body.childNodes.length; c++){
-var node = iframe.contentWindow.document.body.childNodes[c];
-if (node.nodeType == 1 && node.tagName.toLowerCase() == "div") this.contentDestination.appendChild(node.cloneNode(true));
-}
-document.body.removeChild(iframe);
-//end package requests
-var pkg = this.packages[arrayIndexOf(this.packages, iframe, "iframe")];
-pkg.loaded = true;
-pkg.iframe = null;
-for (var r in pkg.requests) this.completeRequest(pkg.requests[r]);
-},
-completeRequest:function(request){
-request.oncomplete.call(request.oncompleteScope, {request:request});
-}
+    packages:[], //{url, iframe, requests, loaded}
+    contentDestination:document.body,
+    //public
+    load:function(request){ //{url, oncomplete, oncompleteScope}
+        var pkg = this.packages[arrayIndexOf(this.packages, request.url, "url")];
+        if (!pkg){
+            pkg = {url:request.url, requests:[request], loaded:false};
+            this.packages.push(pkg);
+            pkg.iframe = document.createElement("iframe");
+            pkg.iframe.controller = this;
+            pkg.iframe.style.display = "none";
+            pkg.iframe.src = pkg.url;
+            document.body.appendChild(pkg.iframe);
+        if (pkg.iframe.readyState) pkg.iframe.onreadystatechange = function(){ if (this.readyState == "complete") this.controller.unloadPackage(this); }
+        else pkg.iframe.contentWindow.onload = function(){ this.frameElement.controller.unloadPackage(this.frameElement); }
+        }
+        else{
+            if (!pkg.loaded) pkg.requests.push(request);
+            else this.completeRequest(request);
+        }
+    },
+    setContentDestination:function(element){
+        this.contentDestination = element;
+    },
+    //private
+    unloadPackage:function(iframe){
+        //move styles, scripts, and content from loaded iframe to document
+        var styles = iframe.contentWindow.document.getElementsByTagName("style");
+        for (var s = 0; s < styles.length; s++) document.getElementsByTagName("head")[0].appendChild(styles[s]);
+        var scripts = iframe.contentWindow.document.getElementsByTagName("script");
+        for (var s = 0; s < scripts.length; s++){
+        var script = document.createElement("script");
+        script.text = scripts[s].text;
+        document.body.appendChild(script);
+        }
+        for (var c = 0; c < iframe.contentWindow.document.body.childNodes.length; c++){
+        var node = iframe.contentWindow.document.body.childNodes[c];
+        if (node.nodeType == 1 && node.tagName.toLowerCase() == "div") this.contentDestination.appendChild(node.cloneNode(true));
+        }
+        document.body.removeChild(iframe);
+        //end package requests
+        var pkg = this.packages[arrayIndexOf(this.packages, iframe, "iframe")];
+        pkg.loaded = true;
+        pkg.iframe = null;
+        for (var r in pkg.requests) this.completeRequest(pkg.requests[r]);
+    },
+        completeRequest:function(request){
+        request.oncomplete.call(request.oncompleteScope, {request:request});
+        }
 }
 //
 window.onload = function(){application.init();};
