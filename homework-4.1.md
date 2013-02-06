@@ -60,3 +60,24 @@ var options = {
 		}
       
 '''
+
+'''javascript
+`flight / lib / utils.js:125`
+//A dictionary named u is created that has 0 keys
+//An array named a is created that has 0 indexes
+
+uniqueArray: function(array) {
+        var u = {}, a = [];
+
+        for (var i = 0, l = array.length; i < l; ++i) {
+          if (u.hasOwnProperty(array[i])) {
+            continue;
+          }
+
+          a.push(array[i]);
+          u[array[i]] = 1;
+        }
+
+        return a;
+      }, 
+'''
