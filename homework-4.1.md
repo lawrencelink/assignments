@@ -81,3 +81,21 @@ uniqueArray: function(array) {
         return a;
       }, 
 '''
+
+'''javascript
+`discourse / lib / headless-ember.js:1`
+//A dictionary named Element is created that has 0 keys
+//properties of the element are assigned to functions
+
+// DOM
+var Element = {};
+Element.firstChild = function () { return Element; };
+Element.innerHTML = function () { return Element; };
+
+//A document dictrionary is created with 2 keys - createRange and createElement
+var document = { createRange: false, createElement: function() { return Element; } };
+var window = this;
+this.document = document;
+
+}
+'''
