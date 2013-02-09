@@ -2,7 +2,7 @@
 
 * looking for some array and dictionary examples to comment on
 
-'''javascript
+```javascript
 `node-mysql / lib / ConnectionConfig.js:71`
 //A list named defaultFlags is defined
 
@@ -12,9 +12,9 @@ var defaultFlags = [ "LONG_PASSWORD", "FOUND_ROWS", "LONG_FLAG",
                         "TRANSACTIONS", "RESERVED", "SECURE_CONNECTION",
                         "MULTI_RESULTS" ];
                         
-'''
+```
   
-'''javascript
+```javascript
 `node-mysql / lib / ConnectionConfig.js:90`
 //A dictionary named options is defined with 3 keys host, port and database
 
@@ -24,9 +24,9 @@ var options = {
     database : url.pathname.substr(1),
   };
   
-'''
+```
 
-'''javascript
+```javascript
 `flight / lib / advice.js:18`
 //A dictionary named advice is created that has a key called around
 // the dictionary contains a function that returns a args variable
@@ -41,9 +41,9 @@ var advice = {
         }
       },
       
-'''
+```
 
-'''javascript
+```javascript
 `sassaparilla / assets / js / hashgrid.js:68`
 //A dictionary named options is created that has 9 keys 
 
@@ -59,9 +59,9 @@ var options = {
 			cookiePrefix: 'hashgrid'// prefix for the cookie name
 		}
       
-'''
+```
 
-'''javascript
+```javascript
 `flight / lib / utils.js:125`
 //A dictionary named u is created that has 0 keys
 //An array named a is created that has 0 indexes
@@ -80,9 +80,9 @@ uniqueArray: function(array) {
 
         return a;
       }, 
-'''
+```
 
-'''javascript
+```javascript
 `discourse / lib / headless-ember.js:1`
 //A dictionary named Element is created that has 0 keys
 //properties of the element are assigned to functions
@@ -98,4 +98,4 @@ var window = this;
 this.document = document;
 
 }
-'''
+```
