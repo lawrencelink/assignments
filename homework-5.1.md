@@ -3,7 +3,7 @@
 * looking for some nested conditional statements examples to comment on
 
 ```javascript
-`jquery / src / data.js:71
+jquery / src / data.js:71
 //if else statement with a sub if else statement
 
        	// If typeof data in variable named data literally is a "string" then
@@ -34,7 +34,7 @@
 ```
 
 ```javascript
-`jquery / src / data.js:249
+jquery / src / data.js:249
 // Gets all values
         //if the variable named key is strictly undefined
     	if ( key === undefined ) {
@@ -60,5 +60,60 @@
 			}
 
 			return data;
+		}
+```
+
+
+```javascript
+jquery / src / event.js:711
+    //if variable types is literally an object
+    	if ( typeof types === "object" ) {
+			// ( types-Object, selector, data )
+            
+            //if selector variable is not a string
+			if ( typeof selector !== "string" ) {
+				// ( types-Object, data )
+				data = data || selector;
+				selector = undefined;
+			}
+			for ( type in types ) {
+				this.on( type, selector, data, types[ type ], one );
+			}
+			return this;
+		}
+```
+```javascript
+jquery / src / event.js:397
+    //if delegateCount and cur.nodeType and (event.button or event.type are not litterally click)
+    if ( delegateCount && cur.nodeType && (!event.button || event.type !== "click") ) {
+
+			for ( ; cur != this; cur = cur.parentNode || this ) {
+
+				//if cur.disable is not literally true or event.type is not literally click
+				if ( cur.disabled !== true || event.type !== "click" ) {
+					matches = [];
+					for ( i = 0; i < delegateCount; i++ ) {
+						handleObj = handlers[ i ];
+
+						// Don't conflict with Object.prototype properties (#13203)
+						sel = handleObj.selector + " ";
+                        
+                        //if matches array on the sel index is literally undefined
+						if ( matches[ sel ] === undefined ) {
+							matches[ sel ] = handleObj.needsContext ?
+								jQuery( sel, this ).index( cur ) >= 0 :
+								jQuery.find( sel, this, null, [ cur ] ).length;
+						}
+                        //if matches array on the sel index
+						if ( matches[ sel ] ) {
+							matches.push( handleObj );
+						}
+					}
+                    //if matches.length
+					if ( matches.length ) {
+						handlerQueue.push({ elem: cur, handlers: matches });
+					}
+				}
+			}
 		}
 ```
