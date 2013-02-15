@@ -19,7 +19,7 @@ jquery / src / data.js:71
 			// Note, this will kill the reference between
 			// "this.cache[ unlock ]" and "cache"
 			
-            //if the jQuery.isEmptyObject function with cache argument is not empty then
+            //if the jQuery.isEmptyObject function with cache argument is true then
             if ( jQuery.isEmptyObject( cache ) ) {
 				cache = data;
 			// Otherwise, copy the properties one-by-one to the cache object
@@ -116,4 +116,49 @@ jquery / src / event.js:397
 				}
 			}
 		}
+```
+
+```javascript
+jquery / src / effect.js:349
+
+for ( index = 0 ; index < length ; index++ ) {
+    		prop = handled[ index ];
+			tween = anim.createTween( prop, hidden ? dataShow[ prop ] : 0 );
+			orig[ prop ] = dataShow[ prop ] || jQuery.style( elem, prop );
+            
+            //if prop in dataShow evaulates to false
+			if ( !( prop in dataShow ) ) {
+				dataShow[ prop ] = tween.start;
+                if hidden variable evaluates to true
+				if ( hidden ) {
+					tween.end = tween.start;
+					tween.start = prop === "width" || prop === "height" ? 1 : 0;
+				}
+			}
+		}
+```
+
+```javascript
+jquery / src / manipulation.js:49
+//if the first index in 'this' variable evaluates to true then
+if ( this[ 0 ] ) {
+
+    		// The elements to wrap the target around
+			wrap = jQuery( html, this[ 0 ].ownerDocument ).eq( 0 ).clone( true );
+            //if the first index in 'this' variables parentnode property evaluates to true then
+			if ( this[ 0 ].parentNode ) {
+				wrap.insertBefore( this[ 0 ] );
+			}
+```
+
+```javascript
+jquery / src / css.js:142
+return this.each(function() {
+            //TERNARY CONDITIONAL OPERATOR!!!!!
+            //if bool is true return state if bool is false return isHidden(this)
+    		if ( bool ? state : isHidden( this ) ) {
+				jQuery( this ).show();
+			} else {
+				jQuery( this ).hide();
+			}
 ```
