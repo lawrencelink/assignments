@@ -102,3 +102,27 @@ jquery / speed / jquery-basis.js:2485
 			namespaces = "";
 ```
 
+```javascript
+jquery / speed / jquery-basis.js:1746
+//declare j as pos or 0; loop while j is less than or equal to eventType.length; increment j by one on each loop
+for ( var j = pos || 0; j < eventType.length; j++ ) {
+    			handleObj = eventType[ j ];
+
+				if ( handler.guid === handleObj.guid ) {
+					// remove the given handler for the given type
+					if ( all || namespace.test( handleObj.namespace ) ) {
+						if ( pos == null ) {
+							eventType.splice( j--, 1 );
+						}
+
+						if ( special.remove ) {
+							special.remove.call( elem, handleObj );
+						}
+					}
+
+					if ( pos != null ) {
+						break;
+					}
+				}
+			}
+```
