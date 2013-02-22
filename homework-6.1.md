@@ -126,3 +126,46 @@ for ( var j = pos || 0; j < eventType.length; j++ ) {
 				}
 			}
 ```
+
+
+```javascript
+jquery / src / event.js:399
+//loop while cur is not equal to this;
+//incrementer is strange, increment cur = cur.parentNode or this, weird
+for ( ; cur != this; cur = cur.parentNode || this ) {
+
+    			// Don't process clicks on disabled elements (#6911, #8165, #11382, #11764)
+				if ( cur.disabled !== true || event.type !== "click" ) {
+					matches = [];
+                    //loop while i is less than delegateCount, initialize i at zero, increment i by one each iteration
+					for ( i = 0; i < delegateCount; i++ ) {
+						handleObj = handlers[ i ];
+
+						// Don't conflict with Object.prototype properties (#13203)
+						sel = handleObj.selector + " ";
+
+						if ( matches[ sel ] === undefined ) {
+							matches[ sel ] = handleObj.needsContext ?
+								jQuery( sel, this ).index( cur ) >= 0 :
+								jQuery.find( sel, this, null, [ cur ] ).length;
+						}
+						if ( matches[ sel ] ) {
+							matches.push( handleObj );
+						}
+					}
+					if ( matches.length ) {
+						handlerQueue.push({ elem: cur, handlers: matches });
+					}
+				}
+			}
+``` 
+
+```javascript
+jquery / src / event.js:499
+i = copy.length;
+//loop for each integer in copy.length
+while ( i-- ) {
+    		prop = copy[ i ];
+			event[ prop ] = originalEvent[ prop ];
+		}
+```
