@@ -13,6 +13,8 @@ setRGB: function ( r, g, b ) {
 
 	},
 ```
+* in scope variables
+* return value line number and statement
 
 `three_js / build/ three.js:621`
 return new THREE.Color().setRGB( this.r, this.g, this.b );
