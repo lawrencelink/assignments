@@ -31,3 +31,10 @@
 * The return value of the function is false if jQuery.isWindow( obj ) is truthy
 * The return value of the function is true if obj.nodeType === 1 && length
 * The funtion also returns 'type' as strictly an array or not a function and length as zero or length as a number greater than zero in the obj variable
+
+`jquery/src/ajax.js:58`
+
+* The function name is 'addToPrefiltersOrTransports'
+* The argument is 'structure'
+* The in-scope variable is 'dataType'
+* The function returns an anonymous function
