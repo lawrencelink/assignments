@@ -14,6 +14,26 @@
 ```
 * constructor function: Callbacks
 * arguments: options
-* has a method named 'fire'
-* has a property named 'self' that itself has many methods
+* method: 'fire'
+* property: 'self' that itself has many methods
 * called on ajax.js to be placed into a variable named completeDeferred on line 343, 424 and 678
+
+`src/core.js:713`
+```javascript
+    access: function( elems, fn, key, value, chainable, emptyGet, raw ) {
+```
+* constructor function: access
+* arguments: elems, fn, key, value, chainable, emptyGet, raw
+* method: 
+* property: 'now' 
+* called on attributes.js returned by the attr: and prop: objects on line 10 and 20
+
+`src/attributes.js:19`
+```javascript
+    prop: function( name, value ) {
+```
+* constructor function: prop
+* arguments: name, value
+* method: 
+* property: 
+* called on attributes.js returned by the attr: objects on line 300
