@@ -37,3 +37,33 @@
 * method: 
 * property: 
 * called on attributes.js returned by the attr: objects on line 300
+
+`src/data.js:16`
+```javascript
+    function Data() {
+```
+* constructor function: Data
+* arguments: 
+* method: 
+* property: 
+* called on data.js assigned to data_user variable on line 199
+
+`src/event.js:588`
+```javascript
+    jQuery.Event = function( src, props ) {
+```
+* constructor function: Event
+* arguments: src, props
+* method: 
+* property: 
+* called on event.js assigned to event variable on line 497
+
+`src/event.js:582`
+```javascript
+    jQuery.removeEvent = function( elem, type, handle ) {
+```
+* constructor function: removeEvent
+* arguments: elem, type, handle
+* method: 
+* property: 
+* called on event.js on line 184
