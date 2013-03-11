@@ -67,3 +67,13 @@
 * method: 
 * property: 
 * called on event.js on line 184
+
+`src/serialize.js:40`
+```javascript
+    jQuery.param = function( a, traditional ) {
+```
+* constructor function: param
+* arguments: a
+* method: add
+* property: prefix, s
+* called on serialize.js on line 8
