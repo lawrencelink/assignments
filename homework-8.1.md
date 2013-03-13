@@ -77,3 +77,34 @@
 * method: add
 * property: prefix, s
 * called on serialize.js on line 8
+
+`src/css.js:111`
+```javascript
+    jQuery.fn.extend({
+    css: function( name, value ) {
+```
+* constructor function: css
+* arguments: name, value
+* method: 
+* property: 
+* called on offset.js on line 38
+
+`src/ajax.js:294`
+```javascript
+    ajaxSetup: function( target, settings ) {
+```
+* constructor function: ajaxSetup
+* arguments: target, settings
+* method: 
+* property: 
+* called on ajax.js on line 334
+
+`src/event.js:294`
+```javascript
+    trigger: function( event, data, elem, onlyHandlers ) {
+```
+* constructor function: trigger
+* arguments: event, data, elem, onlyHandlers
+* method: 
+* property: 
+* called on ajax.js on line 468
