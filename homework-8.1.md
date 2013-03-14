@@ -108,3 +108,13 @@
 * method: 
 * property: 
 * called on ajax.js on line 468
+
+`src/effects.js:360`
+```javascript
+    function Tween( elem, options, prop, end, easing ) {
+```
+* constructor function: tween
+* arguments: elem, options, prop, end, easing 
+* method: 
+* property: 
+* called on effects.js on line 46
