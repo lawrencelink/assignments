@@ -15,5 +15,5 @@ var assert = require("assert");
  *  +0 | -1  | -1
  */
  
- assert(1 + 1 == 1, '1 + 1 does not equal 1');
+ assert(1 + 1 === 2, '1 + 1 does equal 2');
 
