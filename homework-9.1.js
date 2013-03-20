@@ -17,7 +17,8 @@ var assert = require("assert");
  
 function division(x,y) {
     
-    return z;
+    return 1;
 }
 
-
+assert(division(1,1)===1,"1*1 does equal 1");
+assert(division(1,0)===0,"1*0 does eqaul 0")
