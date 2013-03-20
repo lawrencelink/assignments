@@ -21,6 +21,3 @@ function subtraction(x,y) {
 }
 
 
-
-assert(subtraction(1,1)===0,'1-1 does equal 0');
-assert(subtraction(1,0)===1,'1-0 does equal 1');
