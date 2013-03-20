@@ -1,7 +1,7 @@
 var assert = require("assert");
 
 /**
- * testing division():
+ * testing multiplication():
  * one | two | out
  * ====+=====+====
  *  +1 | +1  | 1
@@ -15,10 +15,18 @@ var assert = require("assert");
  *  +0 | -1  | 0
  */
  
-function division(x,y) {
-    
-    return 1;
+function multiplication(x,y) {
+    z = (x*y);
+    return z;
 }
 
-assert(division(1,1)===1,"1*1 does equal 1");
-assert(division(1,0)===0,"1*0 does eqaul 0")
+assert(multiplication(1,1)===1,"1*1 does equal 1");
+assert(multiplication(1,0)===0,"1*0 does equal 0");
+assert(multiplication(1,-1===-1,"1*-1 does equal -1"));
+assert(multiplication(-1,1)===-1,"-1*1 does equal 1");
+assert(multiplication(-1,0)===0,"-1*0 does equal 0");
+assert(multiplication(-1,-1)===1,"-1*-1 does equal 1");
+assert(multiplication(0,1)===0,"0*1 does equal 0");
+assert(multiplication(0,0)===0,"0*0 does equal 0");
+assert(multiplication(0,-1)===0, "0*-1 does equal 0");
+
