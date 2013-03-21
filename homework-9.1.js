@@ -20,5 +20,8 @@ function division(x,y) {
     return z;
 }
 
+assert(division(1,1)===1,"1/1 does equal 1");
+assert(division(1,0)===NaN,"1/0 does equal NaN");
+
 
 
