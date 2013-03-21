@@ -21,7 +21,7 @@ function division(x,y) {
 }
 
 assert(division(1,1)===1,"1/1 does equal 1");
-//assert(division(1,0)===Infinity,"1/0 does equal NaN");
+assert(division(1,0)===Infinity,"1/0 does equal NaN");
 
 
 
