@@ -18,11 +18,17 @@ var assert = require("assert");
  assert.equal( +2, addition(+1,+1), " +1 +1 = +2");
  
  autoAssert( +1, +0, +1);
+ autoAssert( +1, -1, +0);
+ autoAssert( 1000, +1, +0);
  
  function autoAssert(a,b,c) {
+     
     assert.equal( c, addition(a,b), " +1 +0 = +1");    
+    
  }
  
  function addition(a,b) {
+     
      return (a + b);
+     
 }
