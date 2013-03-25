@@ -23,7 +23,7 @@ var assert = require("assert");
  
  function autoAssert(a,b,c) {
      
-    assert.equal( c, addition(a,b), " +1 +0 = +1");    
+    assert.equal( c, addition(a,b), a & b & c);    
     
  }
  
