@@ -19,7 +19,7 @@ var assert = require("assert");
  
  autoAssert( +1, +0, +1);
  autoAssert( +1, -1, +0);
- autoAssert( 1000, +1, +0);
+ autoAssert( -1, +1, +0);
  
  function autoAssert(a,b,c) {
      
