@@ -16,9 +16,13 @@ var assert = require("assert");
  */
  
  assert.equal( +2, addition(+1,+1), " +1 +1 = +2");
- assert.equal( +1, addition(+1,+0), " +1 +0 = +1");
  
+ autoAssert( +1, +0, +1);
+ 
+ function autoAssert(a,b,c) {
+    assert.equal( c, addition(a,b), " +1 +0 = +1");    
+ }
  
  function addition(a,b) {
-     return a + b;
+     return (a + b);
 }
