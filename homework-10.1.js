@@ -18,5 +18,5 @@ var assert = require("assert");
 assert.equal( +0,subtraction(+1,+1), " +1 - +1 = +0");
 
 function subtraction(a,b) {
-    return 0;
+    return (a - b);
 }
