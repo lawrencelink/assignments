@@ -15,8 +15,8 @@ var assert = require("assert");
  *  +0 | -1  | +1
  */
 
-assert.equal( 0,(subtraction(+1,+1), " +1 - +1 = +0");
+assert.equal( +0,subtraction(+1,+1), " +1 - +1 = +0");
 
-subtraction(a,b) {
-    return 1;
+function subtraction(a,b) {
+    return 0;
 }
