@@ -18,7 +18,13 @@ var assert = require("assert");
 
 assert.equal( +1, multiplication(+1,+1), " +1 * +1= +1");
 assert.equal( +0, multiplication(+1,+0), " +1 * +1= +0");
+autoAssert( +1, -1, -1);
 autoAssert( -1, +1, -1);
+autoAssert( -1, +0, +0);
+autoAssert( -1, -1, +1);
+autoAssert( +0, +1, +0);
+autoAssert( +0, +0, +0);
+autoAssert( +0, -1, -0);
 
 function autoAssert( a, b, c) {
     
