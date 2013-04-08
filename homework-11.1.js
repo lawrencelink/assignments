@@ -1,3 +1,11 @@
 var assert = require("assert");
 
-assert(hallway==true);
+var hallway = {
+    door: [ 1,
+            2,
+            3,
+            4,]  
+};
+
+assert( hallway.door[5]);
+
