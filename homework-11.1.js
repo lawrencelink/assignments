@@ -7,13 +7,10 @@ var doors = new Array();
     var iMax = 100;
     var jMax = 100;
     var i;
-    var j;
     
     for (i=0;i<iMax;i++) {
      doors[i]=new Array();
-     for (j=0;j<jMax;j++) {
-      doors[i][j]=0;
-     }
+     doors[i]=0;
     }
 //}
 
@@ -22,5 +19,5 @@ var hallway = {
 };
 
             
-assert( hallway.door[99]);
-assert( doors[99]);
+assert( hallway.door[99]===0);
+console.log(doors[99]);
