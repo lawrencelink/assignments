@@ -13,11 +13,6 @@ for (i=0;i<iMax;i++) {
     door[i]=0;
 }
 
-var hallway = {
-    doors: door
-}
-
-
 //open the doors
 for (i=0;i<iMax;i++) {
     door[i]=1;
@@ -31,10 +26,15 @@ for (i=0;i<iMax;i+=2) {
 //Examine every third door
 for (i=0;i<iMax;i+=3) {
     if (door[i]===0) {
-        door[i]===1
+        //door[i]===1
+        console.log(door[i]);
     }
 }
 
-assert( hallway.doors[2]===1);
+var hallway = {
+    doors: door
+}
 
-console.log( hallway.doors);
+//assert( hallway.doors[2]===1);
+
+//console.log( hallway.doors);
