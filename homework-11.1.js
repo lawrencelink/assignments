@@ -2,4 +2,5 @@ var assert = require("assert");
 
 var doors = [1];
 
-assert(doors);
+assert(doors[1]);
+
