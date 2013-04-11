@@ -15,6 +15,11 @@ function walk (pass) {
             door[i] = 1;   
         }
     }
+    if (pass===2) {
+        for(i=0;i<maxDoor;i+=2) {
+            door[i] = 0
+        }
+    }
 }
 var hallway = {
     doors: door, 
@@ -24,6 +29,8 @@ var hallway = {
 
 walk(0)
 walk(1)
+walk(2)
+walk(3)
 //assert(hallway.doors[99]===1);
 assert(hallway.pass);
-console.log(hallway.doors[99]);
+console.log(hallway.doors);
