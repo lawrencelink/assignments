@@ -9,10 +9,12 @@ for(i=0;i<maxDoor;i++) {
 }
 
 var hallway = {
-    doors: door 
+    doors: door, 
     
+    pass: [1]
 }
 
 
 assert(hallway.doors[99]===0);
-assert(pass);
+assert(hallway.pass);
+console.log(hallway.doors);
