@@ -15,38 +15,30 @@ function walk (pass) {
             door[i] = 1;   
         }
     }
-    if (pass===2) {
+    if (pass === 2) {
         for(i=0;i<maxDoor;i+=2) {
-            door[i] = 0
+            door[i] = 0;
         }
     }
-    if (pass===3) {
-        for (i=0;i<maxDoor;i+=3) {
+    if (pass === 3) {
+        for (i=0;i<maxDoor;i+=pass) {
             if (door[i]===0) {
-                door[i]=1
+                door[i]=1;
             }  
             if (door[i]===1) {
-                door[i]=0
+                door[i]=0;
             }
+            
         }
         
     }
-    if (pass===4) {
-        for (i=0;i<maxDoor;i+=4) {
-            if (door[i]===0) {
-                door[i]=1
-            }  
-            if (door[i]===1) {
-                door[i]=0
-            }
-        }
-        
-    }
+    
+    
 }
 var hallway = {
     doors: door, 
     
-    pass: [0]
+    //pass: [0]
 }
 
 //for (var i = 0; i < 4; i++) {
@@ -59,5 +51,5 @@ walk(2)
 walk(3)
 walk(4)
 //assert(hallway.doors[99]===1);
-assert(hallway.pass);
-console.log(hallway.doors);
+//assert(hallway.doors[3]===1);
+//console.log(door[3]);
