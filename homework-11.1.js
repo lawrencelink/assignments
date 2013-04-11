@@ -1,3 +1,6 @@
 var assert = require("assert");
 
-assert(hallway);
+var hallway = {
+       
+}
+assert(hallway.doors);
