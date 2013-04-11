@@ -4,20 +4,26 @@ var door = new Array;
 var maxDoor = 100;
 var i;
 
-for(i=0;i<maxDoor;i++) {
-    door[i] = 0;   
+function walk (pass) {
+    if (pass === 0) {
+        for(i=0;i<maxDoor;i++) {
+            door[i] = 0;   
+        }
+    }
+    if (pass === 1) {
+        for(i=0;i<maxDoor;i++) {
+            door[i] = 1;   
+        }
+    }
 }
-
 var hallway = {
     doors: door, 
     
-    pass: [1]
+    pass: [0]
 }
 
-for(i=0;i<maxDoor;i++) {
-    door[i]===1;
-}
-
+walk(0)
+walk(1)
 //assert(hallway.doors[99]===1);
 assert(hallway.pass);
 console.log(hallway.doors[99]);
