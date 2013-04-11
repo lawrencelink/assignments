@@ -1,8 +1,18 @@
 var assert = require("assert");
 
+var door = new Array;
+var maxDoor = 100;
+var i;
 
+for(i=0;i<maxDoor;i++) {
+    door[i] = 0;   
+}
 
 var hallway = {
-    doors: [1]   
+    doors: door 
+    
 }
-assert(hallway.doors[1]);
+
+
+assert(hallway.doors[99]===0);
+assert(pass);
