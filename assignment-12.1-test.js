@@ -17,11 +17,17 @@ hundredDoors.hallway.doors.forEach(function(door){
 })
 
 // do: PASS 1 -- take a walk down the hallway, change the state of the doors
-assert(hundredDoors.hallway.toggle);
+
+console.log(hundredDoors.hallway.toggle(0));
+
 // test: are all the Doors "open"?
 
-// do: PASS 2 -- take a walk down the hallway, change the state of the doors
+hundredDoors.hallway.doors.forEach(function(door){
+        assert.equal(hundredDoors.hallway.toggle(door),1);
+})
 
+// do: PASS 2 -- take a walk down the hallway, change the state of the doors
+console.log(hundredDoors.hallway.toggle(0));
 // test: is every EVEN Door "closed"? is every ODD Door "open"?
 
 // do: PASS 3 -- take a walk down the hallway, change the state of the doors
