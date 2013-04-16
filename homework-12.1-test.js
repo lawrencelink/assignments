@@ -12,7 +12,7 @@ assert( hundredDoors.hallway.doors);
 
 // test: do we have 100 Doors?
 
-
+assert( hundredDoors.hallway.doors.length === 100);
 
 // test: are all the Doors "closed"?
 
