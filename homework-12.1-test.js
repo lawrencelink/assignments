@@ -1,5 +1,5 @@
 var assert = require("assert"),
-    hundredDoors = require("./assignment-12.1-code.js");
+    hundredDoors = require("./homework-12.1-code.js");
     
 
 // test: do we have a Hallway?
@@ -8,7 +8,7 @@ assert( hundredDoors.hallway);
 
 // test: do we have Doors in our Hallway?
 
-
+assert( hundredDoors.hallway.doors);
 
 // test: do we have 100 Doors?
 
