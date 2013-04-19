@@ -17,34 +17,4 @@
  *  - a method of walking down the hallway for 100 passes: allPasses (Function)
  */
  
- module.exports = {
  
-    hallway: {
-        
-        doors: [0,0,0,0,0,0,0,0,0,0],
-        
-        toggle: function(door) {
-            
-            if (module.exports.hallway.doors[door] === 0) {
-                return module.exports.hallway.doors[door] = 1;    
-            }
-            
-            if (module.exports.hallway.doors[door] === 1) {
-                return module.exports.hallway.doors[door] = 0;
-            }
-            
-        },
-        
-        passes: function(pass) {
-            
-            for (var i = 0; i < module.exports.hallway.doors.length; i+=2) {
-                
-                return module.exports.hallway.toggle(i);
-                //console.log( module.exports.hallway.toggle(i));
-            }
-            
-            
-        }
-    }
- 
-};
