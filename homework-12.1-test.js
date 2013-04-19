@@ -12,16 +12,20 @@ assert( hundredDoors.hallway.doors);
 
 // test: do we have 10 Doors?
 
-
+assert( hundredDoors.hallway.doors.length === 10);
 
 
 // test: are all the Doors "closed"?
 
-
+hundredDoors.hallway.doors.forEach( function(door) {
+ 
+    assert( hundredDoors.hallway.doors[door] === 0);
+    
+});
 
 // do: PASS 1 -- take a walk down the hallway, change the state of the doors
 
-
+assert( hundredDoors.hallway.toggle());
 
 // test: are all the Doors "open"?
 
