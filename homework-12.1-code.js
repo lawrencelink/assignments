@@ -27,7 +27,23 @@
              
             return module.exports.hallway.doors[door] = 1;
              
-         }
+         },
+         
+         passes: function(pass) {
+            
+            for (var i = 0; i < module.exports.hallway.doors.length; i+=1) {
+                
+                return module.exports.hallway.toggle(i);
+                //console.log( module.exports.hallway.toggle(i));
+            }
+            
+            for (i = 1; i < module.exports.hallway.doors.length; i+=2) {
+                
+                return module.exports.hallway.toggle(i);
+                //console.log( module.exports.hallway.toggle(i));
+            }
+            
+        }
      }
      
      
