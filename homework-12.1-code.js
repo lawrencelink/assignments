@@ -23,26 +23,47 @@
          
          doors: [0,0,0,0,0,0,0,0,0,0],
          
-         toggle: function (door){
-             
-            return module.exports.hallway.doors[door] = 1;
-             
+         toggle: function (door, state){
+            
+            if (state === "open") {
+                return module.exports.hallway.doors[door] = 1;
+            }
+            
+            if (state === "closed") {
+                return module.exports.hallway.doors[door] = 0;
+            }
          },
          
-         passes: function(pass) {
+         passes: function(pass, walk) {
             
-            for (var i = 0; i < module.exports.hallway.doors.length; i+=1) {
-                
-                return module.exports.hallway.toggle(i);
-                //console.log( module.exports.hallway.toggle(i));
+            if (walk === 1) {
+                for (var i = 0; i < module.exports.hallway.doors.length; i+=walk) {
+                    pass[i] = module.exports.hallway.toggle(i, "open"); 
+                }
             }
             
-            for (i = 1; i < module.exports.hallway.doors.length; i+=2) {
+            if (walk ===2) {
+                for ( i = 1; i < module.exports.hallway.doors.length; i+=walk) {
+                    pass[i] = module.exports.hallway.toggle(i, "open"); 
+                }
                 
-                return module.exports.hallway.toggle(i);
-                //console.log( module.exports.hallway.toggle(i));
+                for (i = 0; i < module.exports.hallway.doors.length; i+=walk) {
+                    pass[i] = module.exports.hallway.toggle(i, "closed");
+                }
             }
             
+            if (walk ===3) {
+                for ( i = 0; i < module.exports.hallway.doors.length; i+=walk) {
+                    if (pass[i]===1) {
+                        pass[i] = module.exports.hallway.toggle(i, "close");     
+                    }
+                    if (pass[i]===0) {
+                        pass[i] = module.exports.hallway.toggle(i, "open");     
+                    }
+                }
+        
+            }
+            return pass;
         }
      }
      
