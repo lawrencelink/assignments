@@ -36,13 +36,22 @@
         },
         
         passes: function ( pass) {
-            
+            var temp;
             this.doors = this.doors.map( this.toggle);
-                    
+            temp = this.doors;        
+            
             if (pass === 2) {
             
-                for (var i = 0; i < this.doors.length; i+=2) {
-                    this.doors[i] = this.toggle(this.doors[i]);
+                for (var i = 0; i < this.doors.length; i+=pass) {
+                    this.doors[i] = this.toggle(temp[i]);
+                }
+                
+            }
+            
+            if (pass === 3) {
+            
+                for (var i2 = 0; i2 < this.doors.length; i2+=pass) {
+                    this.doors[i2] = this.toggle(temp[i2]);
                 }
                 
             }
