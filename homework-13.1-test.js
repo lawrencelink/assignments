@@ -24,18 +24,36 @@ hundredDoors.hallway.doors.forEach( function(door) {
 
 // do: PASS 1 -- take a walk down the hallway, change the state of the doors
 
-assert( hundredDoors.hallway.pass);
+assert( hundredDoors.hallway.passes);
 
 // test: are all the Doors "open"?
 
-
+hundredDoors.hallway.passes().forEach( function(door) {
+    
+   assert.equal( door, 1); 
+    
+});
 
 // do: PASS 2 -- take a walk down the hallway, change the state of the doors
 
-
+assert( hundredDoors.hallway.passes(2));
 
 // test: is every EVEN Door "closed"? is every ODD Door "open"?
+var temp;
+hundredDoors.hallway.passes(2);
+temp = hundredDoors.hallway.passes(2);
 
+
+for (var i = 0; i < temp.length; i+=2) {
+    assert( temp[i] === 0);
+    
+    
+}
+
+for (var i = 1; i < hundredDoors.hallway.doors.length; i+=2) {
+    assert( temp[i] === 1);
+    
+}
 
 // do: PASS 3 -- take a walk down the hallway, change the state of the doors
 

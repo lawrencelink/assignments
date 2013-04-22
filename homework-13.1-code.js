@@ -24,9 +24,30 @@
         
         doors: [0,0,0,0,0,0,0,0,0,0],
         
-        toggle: function (door) {
+        toggle: function ( door) {
             
-            return 1;
+            if (door === 0) {
+                return 1;
+            }
+            
+            if (door === 1) {
+                return 0;
+            }
+        },
+        
+        passes: function ( pass) {
+            
+            this.doors = this.doors.map( this.toggle);
+                    
+            if (pass === 2) {
+            
+                for (var i = 0; i < this.doors.length; i+=2) {
+                    this.doors[i] = this.toggle(this.doors[i]);
+                }
+                
+            }
+            
+            return this.doors;
             
         }
         
