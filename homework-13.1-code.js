@@ -35,12 +35,27 @@
             
         },
         
-        pass: function( ) {
+        pass: function( walk) {
           
             this.doors = this.doors.map( this.toggle);
+            
+            
+            for (var i = 0; i < this.doors.length; i+=2) {
+            
+                this.doors[i] = this.toggle( this.doors[i]);
+            }
+            
+            if (walk === 2) {
+                for (var i2 = 0; i2 < this.doors.length; i2+=3) {
+                
+                    this.doors[i2] = this.toggle( this.doors[i2]);
+                }
+            }
+            
             return this.doors;
             
         }
+        
     }   
      
 };
