@@ -22,9 +22,14 @@
      
     hallway: {
         
-        doors: {
+        doors: [0,0,0,0,0,0,0,0,0,0],
+        
+        toggle: function ( door) {
             
-            
+            if (door === 0) {
+                
+                 return 1;
+            }
             
         }
     }
