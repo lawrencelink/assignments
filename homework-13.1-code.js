@@ -31,6 +31,18 @@
                  return 1;
             }
             
+            if (door === 0) {
+                
+                 return 1;
+            }
+            
+        },
+        
+        pass: function () {
+            
+            this.doors = this.doors.map( this.toggle);
+            
+            return this.doors;
         }
     }
   
