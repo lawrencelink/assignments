@@ -22,7 +22,7 @@ module.exports = {
     
     hallway: {
         
-        doors: []
+        doors: [0,0,0,0,0,0,0,0,0,0]
         
     }
     

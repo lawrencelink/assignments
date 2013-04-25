@@ -11,7 +11,9 @@ assert( hundredDoors.hallway.doors);
 assert( hundredDoors.hallway.doors.length === 10);
 
 //are all the doors closed?
-
+hundredDoors.hallway.doors.forEach( function(door) {
+    assert.equal( door,1);    
+});
 
 //can we change the state of a door(create toggle function)?
 
