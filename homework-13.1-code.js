@@ -24,7 +24,7 @@ module.exports = {
         
         doors: [0,0,0,0,0,0,0,0,0,0],
         
-        passes: [1],
+        passes: [],
         
         toggle: function (door) {
             
@@ -37,33 +37,24 @@ module.exports = {
             }
         },
         
-        pass: function ( ) {
-            
-            this.passes = 0;
-            
+        pass: function ( walks) {
+                        
             this.doors = this.doors.map( this.toggle);  
+            
+            if (walks === 1) {
+                for (var i = 0; i < this.doors.length; i+=2) {
+                    this.doors[i] = this.toggle( this.doors[i]);
+                }  
             
             this.passes = 1;
             
-            if ( this.passes === 1) {
-                for (var i = 0; i < this.doors.length; i+=2) {
-                    
-                        this.doors[i] = this.toggle(this.doors[i]);
-                    
-                }
+            }
+            
+            if (walks === 2) {
+                
                 
             }
             
-            this.passes = 2;
-            
-            if ( this.passes === 2) {
-                for (var i2 = 0; i2 < this.doors.length; i2+=3) {
-                    
-                        this.doors[i2] = this.toggle(this.doors[i2]);
-                    
-                }
-                
-            }
             return this.doors;
         }
         
