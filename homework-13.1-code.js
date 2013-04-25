@@ -18,3 +18,12 @@
  */
  
  
+module.exports = {
+    
+    hallway: {
+        
+        
+        
+    }
+    
+};

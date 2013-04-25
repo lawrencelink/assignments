@@ -5,7 +5,7 @@ var assert = require("assert"),
 assert( hundredDoors.hallway);
 
 //do we have doors in the hallway?
-
+assert( hundredDoors.hallway.doors);
 
 //do we have 10 doors?
 
