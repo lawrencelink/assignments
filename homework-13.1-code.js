@@ -26,7 +26,12 @@ module.exports = {
         
         toggle: function (door) {
             
-            return 1;
+            if ( door === 0) {
+                return 1;
+            }
+            if ( door === 1) {
+                return 0;
+            }
         }
         
     }
