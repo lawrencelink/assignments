@@ -41,11 +41,13 @@ module.exports = {
             
             this.doors = this.doors.map( this.toggle);  
             this.passes = [0];
-            this.doors[1] = 0;
-            this.doors[3] = 0;
-            this.doors[5] = 0;
-            this.doors[7] = 0;
-            this.doors[9] = 0;
+            
+            this.doors[1] = this.toggle(this.doors[1]);
+            this.doors[3] = this.toggle(this.doors[3]);
+            this.doors[5] = this.toggle(this.doors[5]);
+            this.doors[7] = this.toggle(this.doors[7]);
+            this.doors[9] = this.toggle(this.doors[9]);
+            
             return this.doors;
         }
         
