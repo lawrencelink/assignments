@@ -39,15 +39,31 @@ module.exports = {
         
         pass: function ( ) {
             
+            this.passes = 0;
+            
             this.doors = this.doors.map( this.toggle);  
-            this.passes = [0];
             
-            this.doors[1] = this.toggle(this.doors[1]);
-            this.doors[3] = this.toggle(this.doors[3]);
-            this.doors[5] = this.toggle(this.doors[5]);
-            this.doors[7] = this.toggle(this.doors[7]);
-            this.doors[9] = this.toggle(this.doors[9]);
+            this.passes = 1;
             
+            if ( this.passes === 1) {
+                for (var i = 0; i < this.doors.length; i+=2) {
+                    
+                        this.doors[i] = this.toggle(this.doors[i]);
+                    
+                }
+                
+            }
+            
+            this.passes = 2;
+            
+            if ( this.passes === 2) {
+                for (var i2 = 0; i2 < this.doors.length; i2+=3) {
+                    
+                        this.doors[i2] = this.toggle(this.doors[i2]);
+                    
+                }
+                
+            }
             return this.doors;
         }
         

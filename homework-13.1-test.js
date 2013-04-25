@@ -27,19 +27,21 @@ assert( hundredDoors.hallway.toggle(1)===0);
 //are all doors in the correct state after first pass?
 assert( hundredDoors.hallway.pass);
 
-hundredDoors.hallway.pass().forEach( function(door) {
+//hundredDoors.hallway.pass().forEach( function(door) {
     
-   assert.equal( door, 1); 
+  // assert.equal( door, 1); 
        
-});
+//});
 
-hundredDoors.hallway.doors.forEach( function(door) {
+//hundredDoors.hallway.doors.forEach( function(door) {
     
-    assert.equal(door, 1);
+  //  assert.equal(door, 1);
      
-});
+//});
 
 //can we tell which pass we are on?
 
-assert( hundredDoors.hallway.passes);
+assert.equal( hundredDoors.hallway.passes, 1);
+
 //are all the doors in the correct state after each pass?
+console.log( hundredDoors.hallway.pass());
