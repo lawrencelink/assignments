@@ -23,7 +23,7 @@ module.exports = {
     hallway: {
         
         doors: [0,0,0,0,0,0,0,0,0,0],
-        
+        walk: [0, 1, 2],
         toggle: function (door) {
             
             if ( door === 0) {
@@ -32,6 +32,13 @@ module.exports = {
             if ( door === 1) {
                 return 0;
             }
+        },
+        
+        pass: function () {
+            
+            this.doors = this.doors.map( this.toggle);
+            return this.doors;
+            
         }
         
     }
