@@ -8,7 +8,7 @@ assert( hundredDoors.hallway);
 assert( hundredDoors.hallway.doors);
 
 //do we have 10 doors?
-
+assert( hundredDoors.hallway.doors.length === 10);
 
 //are all the doors closed?
 
